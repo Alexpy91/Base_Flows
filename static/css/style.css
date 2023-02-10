@@ -1,0 +1,198 @@
+* {
+  box-sizing: border-box;
+}
+
+.div_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #b0c228;
+  padding: 15px 20px;
+}
+
+.div_header a {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: #ffffff;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 25px;
+  border-radius: 6px;
+  background-color: rgb(69, 68, 7);
+  margin-right: 10px;
+}
+
+.div_header a:hover {
+  background-color: rgb(239, 91, 158);
+  color: #554c5f;
+}
+
+.div_header a.active {
+  background-color: rgb(198, 124, 22);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+#main_title {
+  float: left;
+  width: 52%;
+  margin-left: 25px;
+  margin-top: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#main_text {
+  width: 100%;
+  margin-left: 0%;
+  background: #ffffff;
+  /* border: 1px solid silver; */
+  padding: 2px 2%;
+  float: left;
+  font-size: 24px;
+  font-family: "Times New Roman", Times, serif;
+  text-indent: 50px;
+  text-align: justify;
+}
+
+header h1 {
+  font-size: 35px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #58c017, #7a33c2);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  line-height: 1.1em;
+  margin-bottom: 10px;
+}
+.button_1,
+.button_2 {
+  text-decoration: none;
+  color: rgb(241, 242, 244);
+  background-color: mediumaquamarine;
+  display: inline-block;
+  padding: 14px 30px;
+  border: 1px solid;
+  position: relative;
+  z-index: 0;
+  border-radius: 6px;
+  margin: 0 15px 15px 0;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.button_2 {
+  background-color: rgb(47, 100, 215);
+}
+
+.button_1:hover {
+  background-color: rgb(255, 0, 8);
+}
+.button_2:hover {
+  background-color: rgb(255, 0, 8);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+  width: 400px;
+  padding: 10px 15px;
+  margin: 6px 0;
+  box-sizing: border-box;
+  border: 2px solid grey;
+  border-radius: 4px;
+  background-color: #3cbc8d;
+  color: white;
+}
+
+textarea {
+  width: 400px;
+  height: 100px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="password"] {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button_update {
+  text-decoration: none;
+  color: rgb(241, 242, 244);
+  background-color: DeepSkyBlue;
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid;
+  position: relative;
+  z-index: 0;
+  border-radius: 6px;
+  margin: 0 5px 5px 0;
+  cursor: pointer;
+  margin-top: 2;
+}
+
+.button_change {
+  text-decoration: none;
+  color: rgb(241, 242, 244);
+  background-color: DarkOrange;
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid;
+  position: relative;
+  z-index: 0;
+  border-radius: 6px;
+  margin: 0 5px 5px 0;
+  cursor: pointer;
+  margin-top: 2;
+}
+
+.button_delete {
+  text-decoration: none;
+  color: rgb(241, 242, 244);
+  background-color: Crimson;
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid;
+  position: relative;
+  z-index: 0;
+  border-radius: 6px;
+  margin: 0 5px 5px 0;
+  cursor: pointer;
+  margin-top: 2;
+}
+
+.main_base {
+  color: #f5f3f8;
+  background: #0c8a5a;
+}
+.main_base .welcome {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 18px;
+  color: red;
+}
+
+select {
+  width: 400px;
+
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}

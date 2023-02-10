@@ -1,0 +1,27 @@
+{% extends 'pattern.html' %}
+{% block title %}
+{{ flow_list_detail.title }}
+{% endblock %}
+
+{% block body %}
+<h1>
+    {{ flow_list_detail.title }} </h1>
+<p>
+
+
+    <b>Наименование:</b>       {{ flow_list_detail.title }} <br>
+    <b>Модель:</b>        {{ flow_list_detail.model }} <br>
+    <b>Принцип действия:</b>        {{ flow_list_detail.action }} <br>
+    <b>НСХ:</b>        {{ flow_list_detail.NSH }} <br>
+    <b>Диапазон (м3/ч):</b>        {{ flow_list_detail.range }} <br>
+    <b>Допускаемая погрешность:</b>        {{ flow_list_detail.error }} <br>
+    <b>МПИ:</b>        {{ flow_list_detail.MPI }} <br>
+    <b>Метод поверки:</b>        {{ flow_list_detail.method }} <br>
+    <b>Комментарий:</b>        {{ flow_list_detail.comment }} <br>
+
+    <br>
+<a class="button_update" href="/flow_list/{{ poz }}/{{ flow_list_detail.id }}/update">Редактировать</a>
+</p>
+
+
+{% endblock %}

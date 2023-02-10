@@ -1,0 +1,39 @@
+{% extends 'pattern.html' %}
+{% block title %}
+main page
+{% endblock %}
+
+{% block body %}
+
+<div>
+    <form method="post">
+        <input type="text" name="title" id="title" placeholder="Наименование"> * <br>
+        <input type="text" name="model" id="model" placeholder="Модель"> * <br>
+        <input type="text" name="action" id="action" placeholder="Принцип действия"><br>
+        <input type="text" name="NSH" id="NSH" placeholder="НСХ"><br>
+        <input type="text" name="range" id="range" placeholder="Диапазон"> * <br>
+        <input type="text" name="error" id="error" placeholder="Допускаемая погрешность"> * <br>
+        <input type="text" name="MPI" id="MPI" placeholder="МПИ"> * <br>
+        <input type="text" name="method" id="method" placeholder="Метод поверки"> * <br>
+
+        <select name="choice_flow">
+            <option value="-1">Выберите тип расходомера</option>
+            <optgroup label="Расходомеры газов">
+                <option value="png">ПНГ</option>
+                <option value="smoke">Дымовые</option>
+            </optgroup>
+             <optgroup label="Расходомеры жидких сред(Однородные)">
+                <option value="oil">Расходомеры сырой нефти</option>
+                <option value="water" name="water" id="water">Расходомеры воды и водных растворов</option>
+                <option value="pulp">Пульпы</option>
+            </optgroup>
+            <optgroup label="Расходомеры водяного пара"></optgroup>
+            <option value="steam">Расходомеры водяного пара</option>
+        </select>
+<br>
+        <textarea name="comment" id="comment" placeholder="Комментарий"></textarea> <br>
+        <input type="submit" value="Добавить">
+    </form>
+</div>
+
+{% endblock %}

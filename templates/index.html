@@ -1,0 +1,42 @@
+{% extends 'pattern.html' %}
+{% block title %}
+main page
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="main_base">
+      <p class="welcome">База данных расходомеров. Выберите необходимый тип</p>
+
+      <ul>
+        <li><b>Расходомеры газов</b></li>
+        <ul>
+          <li><a href="flow_list/png">ПНГ</a></li>
+          <li><a href="flow_list/smoke">Дымовые</a></li>
+        </ul>
+      </ul>
+
+      <ul>
+        <li><b>Расходомеры жидких сред</b></li>
+        <ul>
+          <li>Однородные среды</li>
+          <ul>
+            <li><a href="flow_list/oil">Расходомеры сырой нефти</a></li>
+            <li><a href="flow_list/water">Расходомеры воды и водных растворов</a></li>
+          </ul>
+          <li><a href="flow_list/pulp"> Пульпы</a></li>
+        </ul>
+      </ul>
+
+      <ul>
+
+        <li><b>Расходомеры водяного пара</b></li>
+        <ul>
+         <li><a href="flow_list/steam">Расходомеры водяного пара</a></li>
+          </ul>
+      </ul>
+    </div>
+
+
+{% endblock %}

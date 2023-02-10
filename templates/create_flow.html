@@ -1,0 +1,28 @@
+{% extends 'pattern.html' %}
+{% block title %}
+Изменение данных расходомера
+{% endblock %}
+
+{% block body %}
+<h4>
+    Для изменения внесите новые данные
+
+</h4>
+
+<div>
+    <form method="post">
+        <input type="text" name="title" id="title" value="{{ flow_list_detail_update.title }}" placeholder="Наименование"> * <br>
+        <input type="text" name="model" id="model" value="{{ flow_list_detail_update.model }}" placeholder="Модель"> * <br>
+        <input type="text" name="action" id="action"  value="{{ flow_list_detail_update.action }}" placeholder="Принцип действия"><br>
+        <input type="text" name="NSH" id="NSH" value="{{ flow_list_detail_update.NSH }}" placeholder="НСХ"><br>
+        <input type="text" name="range" id="range" value="{{ flow_list_detail_update.range }}" placeholder="Диапазон"> * <br>
+        <input type="text" name="error" id="error"  value="{{ flow_list_detail_update.error }}" placeholder="Допускаемая погрешность"> * <br>
+        <input type="text" name="MPI" id="MPI" value="{{ flow_list_detail_update.MPI }}" placeholder="МПИ"> * <br>
+        <input type="text" name="method" id="method"  value="{{ flow_list_detail_update.method }}" placeholder="Метод поверки"> * <br>
+        <textarea name="comment" id="comment" value="{{ flow_list_detail_update.comment }}" placeholder="Комментарий"></textarea> <br>
+        <input type="submit" value="Сохранить">
+    </form>
+</div>
+
+
+{% endblock %}

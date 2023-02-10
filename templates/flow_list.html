@@ -1,0 +1,26 @@
+{% extends 'pattern.html' %}
+{% block title %}
+Расходомеры воды и водных растворов
+{% endblock %}
+
+{% block body %}
+<h3>
+Расходомеры воды и водных растворов:
+</h3>
+<div>
+{% if flow_list|length > 0 %}
+    {% for el in flow_list %}
+    {{el.title}}
+    <b> {{el.model}} </b><br>
+
+     <a class="button_change" href="/flow_list/{{ poz }}/{{ el.id }}">Подробнее</a> <br>
+    {% endfor %}
+{% else %}
+    <p>
+        Список пуст! Нажмите кнопку добавить для добавления расходомера в базу
+    </p>
+
+{% endif %}
+</div>
+
+{% endblock %}
