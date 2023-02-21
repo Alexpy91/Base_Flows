@@ -2,12 +2,16 @@
   box-sizing: border-box;
 }
 
+body {
+background: Thistle;
+}
+
 .div_header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  background-color: #b0c228;
+  background-color: green;
   padding: 15px 20px;
 }
 
@@ -18,17 +22,17 @@
   text-decoration: none;
   font-size: 25px;
   border-radius: 6px;
-  background-color: rgb(69, 68, 7);
+  background-color: Chocolate;
   margin-right: 10px;
 }
 
 .div_header a:hover {
-  background-color: rgb(239, 91, 158);
+  background-color: gold;
   color: #554c5f;
 }
 
 .div_header a.active {
-  background-color: rgb(198, 124, 22);
+  background-color: blue;
 }
 
 nav {
@@ -55,6 +59,10 @@ nav {
   font-family: "Times New Roman", Times, serif;
   text-indent: 50px;
   text-align: justify;
+
+}
+.main_base a{
+text-decoration: none;
 }
 
 header h1 {
@@ -179,11 +187,14 @@ input[type="password"] {
 .main_base {
   color: #f5f3f8;
   background: #0c8a5a;
+  text-decoration: none;
+  font-size:18px;
 }
 .main_base .welcome {
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 18px;
-  color: red;
+  font-size: 22px;
+  color: SaddleBrown;
+  padding: 14px 2px 2px 14px;
 }
 
 select {
@@ -195,4 +206,24 @@ select {
   border-radius: 4px;
   background-color: #f8f8f8;
   resize: none;
+}
+
+#footer {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid silver;
+  text-align: center;
+  background: #333;
+  color: #fff;
+  line-height: 50px;
+  margin-bottom: 50px;
+  margin-bottom: 0;
+  margin-top: 50px;
+  border-bottom: 0;
+  border-top: 1px solid silver;
+  position: fixed; /* Фиксированное положение */
+  left: 0; bottom: 0; /* Левый нижний угол */
+  color: #fff; /* Цвет текста */
+  width: 100%; /* Ширина слоя */
 }

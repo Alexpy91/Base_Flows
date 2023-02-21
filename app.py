@@ -107,6 +107,10 @@ class Steam(db.Model):
 def index():
     return render_template('index.html')
 
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 
 @app.route('/add_base', methods=['POST', 'GET'])
 def add_base():
