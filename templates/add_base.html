@@ -6,11 +6,11 @@ main page
 {% block body %}
 
 <div>
-    <form method="post">
+    <p><b>Добавление нового расходомера в базу</b></p>
+    <form enctype=multipart/form-data method="post">
         <input type="text" name="title" id="title" placeholder="Наименование"> * <br>
         <input type="text" name="model" id="model" placeholder="Модель"> * <br>
         <input type="text" name="action" id="action" placeholder="Принцип действия"><br>
-        <input type="text" name="NSH" id="NSH" placeholder="НСХ"><br>
         <input type="text" name="range" id="range" placeholder="Диапазон"> * <br>
         <input type="text" name="error" id="error" placeholder="Допускаемая погрешность"> * <br>
         <input type="text" name="MPI" id="MPI" placeholder="МПИ"> * <br>
@@ -31,7 +31,13 @@ main page
             <option value="steam">Расходомеры водяного пара</option>
         </select>
 <br>
-        <textarea name="comment" id="comment" placeholder="Комментарий"></textarea> <br>
+        <textarea name="comment" id="comment" placeholder="Примечание"></textarea> <br>
+
+        <p><b>Добавьте изображение Уравнение НСХ</b></p>
+        <p><input type="file" name="file_nsh" accept="image/jpeg,image/png"  /></p>
+
+       <p><b>Добавьте изображение внешнего вида, принципиальной схемы</b> </p>
+       <p><input type="file" name="file" accept="image/jpeg,image/png" /> </p>
         <input type="submit" value="Добавить">
     </form>
     <br>

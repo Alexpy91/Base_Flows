@@ -1,44 +1,53 @@
-* {
-  box-sizing: border-box;
-}
+* {box-sizing: border-box;}
 
 body {
-background: Thistle;
+  margin_left: 8px;
+  font-family: Arial, sans-serif;
 }
 
-.div_header {
+header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  background-color: green;
-  padding: 15px 20px;
+  background-color: #333;
+  color: #fff;
+  padding: 20px 10px;
+
 }
 
-.div_header a {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  color: #ffffff;
-  padding: 10px;
+.wrap-logo {
+  display: flex;
+  align-items: center;
+
+}
+
+header a {
+  color: #fff;;
+  padding: 12px;
   text-decoration: none;
+  font-size: 18px;
+  border-radius: 4px;
+}
+
+header a.logo {
   font-size: 25px;
-  border-radius: 6px;
-  background-color: Chocolate;
-  margin-right: 10px;
+  font-weight: bold;
 }
 
-.div_header a:hover {
-  background-color: gold;
-  color: #554c5f;
+header a:hover {
+  background-color: #FBC02D;
+  color: #212121;
 }
 
-.div_header a.active {
-  background-color: blue;
+header a.active {
+  background-color: #FBC02D;
 }
 
 nav {
   display: flex;
   align-items: center;
-}
+  }
 
 #main_title {
   float: left;
@@ -107,7 +116,7 @@ input[type="number"],
 input[type="password"] {
   width: 400px;
   padding: 10px 15px;
-  margin: 6px 0;
+  margin: 6px 0px 0px 0px;
   box-sizing: border-box;
   border: 2px solid grey;
   border-radius: 4px;
@@ -215,7 +224,6 @@ select {
   border-bottom: 1px solid silver;
   text-align: center;
   background: #333;
-  color: #fff;
   line-height: 50px;
   margin-bottom: 50px;
   margin-bottom: 0;
@@ -226,4 +234,5 @@ select {
   left: 0; bottom: 0; /* Левый нижний угол */
   color: #fff; /* Цвет текста */
   width: 100%; /* Ширина слоя */
+  font-size: 12px;
 }

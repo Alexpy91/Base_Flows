@@ -1,10 +1,19 @@
 from flask import Flask, redirect, url_for, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+import os
+import uuid
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Base_Flows.bd'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Base_Flows.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+UPLOAD_FOLDER = 'static\images'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+# UPLOAD_FOLDER = '/static/images/to/the/uploads'
+# ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+# app.config['MAX_CONTENT-PATH']
+
 
 db = SQLAlchemy(app)
 
@@ -20,6 +29,7 @@ class Flow_water(db.Model):
     MPI = db.Column(db.String, nullable=False)
     method = db.Column(db.String, nullable=False)
     comment = db.Column(db.String, nullable=False)
+    name_image = db.Column(db.String, nullable=True)
 
     def __repr__(self):
         return '<Flow_water %r>' % self.id
@@ -36,6 +46,7 @@ class Flow_oil(db.Model):
     MPI = db.Column(db.String, nullable=False)
     method = db.Column(db.String, nullable=False)
     comment = db.Column(db.String, nullable=False)
+    name_image = db.Column(db.String, nullable=True)
 
     def __repr__(self):
         return '<Flow_oil %r>' % self.id
@@ -52,6 +63,7 @@ class PNG(db.Model):
     MPI = db.Column(db.String, nullable=False)
     method = db.Column(db.String, nullable=False)
     comment = db.Column(db.String, nullable=False)
+    name_image = db.Column(db.String, nullable=True)
 
     def __repr__(self):
         return '<PNG %r>' % self.id
@@ -68,9 +80,11 @@ class Smoke(db.Model):
     MPI = db.Column(db.String, nullable=False)
     method = db.Column(db.String, nullable=False)
     comment = db.Column(db.String, nullable=False)
+    name_image = db.Column(db.String, nullable=True)
 
     def __repr__(self):
         return '<Smoke %r>' % self.id
+
 
 class Pulp(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -83,6 +97,7 @@ class Pulp(db.Model):
     MPI = db.Column(db.String, nullable=False)
     method = db.Column(db.String, nullable=False)
     comment = db.Column(db.String, nullable=False)
+    name_image = db.Column(db.String, nullable=True)
 
     def __repr__(self):
         return '<Pulp %r>' % self.id
@@ -99,13 +114,16 @@ class Steam(db.Model):
     MPI = db.Column(db.String, nullable=False)
     method = db.Column(db.String, nullable=False)
     comment = db.Column(db.String, nullable=False)
+    name_image = db.Column(db.String, nullable=True)
 
     def __repr__(self):
         return '<Steam %r>' % self.id
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/contact')
 def contact():
@@ -118,7 +136,7 @@ def add_base():
         title = request.form['title']
         model = request.form['model']
         action = request.form['action']
-        NSH = request.form['NSH']
+
         range = request.form['range']
         error = request.form['error']
         MPI = request.form['MPI']
@@ -126,34 +144,47 @@ def add_base():
         comment = request.form['comment']
         type_flow = request.form['choice_flow']
 
+        poz = (request.files['file'].filename).find('.')
+        image = request.files['file'].filename[poz:]  # get .jpg
+        name_image = str(uuid.uuid4()) + image
+
+        poz1 = (request.files['file_nsh'].filename).find('.')
+        image_nsh = request.files['file_nsh'].filename[poz1:]  # get .jpg
+        NSH = str(uuid.uuid4()) + image_nsh
+
+
+        filename = name_image
+        file = request.files['file']
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+        filename2 = NSH
+        file2 = request.files['file_nsh']
+        file2.save(os.path.join(app.config['UPLOAD_FOLDER'], filename2))
+
+
         if type_flow == 'water':
-            flow_water_list = Flow_water.query.order_by(Flow_water.model).all()
-            for el in flow_water_list:
-                if el.title == title:
-                    return "This title already have"
-                else:
-                    flow_add = Flow_water(title=title, model=model, action=action, NSH=NSH, range=range, error=error,
-                                  MPI=MPI, method=method, comment=comment)
+            flow_add = Flow_water(title=title, model=model, action=action, NSH=NSH, range=range, error=error,
+                                  MPI=MPI, method=method, comment=comment, name_image=name_image)
 
         elif type_flow == 'oil':
             flow_add = Flow_oil(title=title, model=model, action=action, NSH=NSH, range=range, error=error,
-                                MPI=MPI, method=method, comment=comment)
+                                MPI=MPI, method=method, comment=comment, name_image=name_image)
 
         elif type_flow == 'pulp':
             flow_add = Pulp(title=title, model=model, action=action, NSH=NSH, range=range, error=error,
-                            MPI=MPI, method=method, comment=comment)
+                            MPI=MPI, method=method, comment=comment, name_image=name_image)
 
         elif type_flow == 'png':
             flow_add = PNG(title=title, model=model, action=action, NSH=NSH, range=range, error=error,
-                            MPI=MPI, method=method, comment=comment)
+                           MPI=MPI, method=method, comment=comment, name_image=name_image)
 
         elif type_flow == 'smoke':
             flow_add = Smoke(title=title, model=model, action=action, NSH=NSH, range=range, error=error,
-                                MPI=MPI, method=method, comment=comment)
+                             MPI=MPI, method=method, comment=comment, name_image=name_image)
 
         elif type_flow == 'steam':
             flow_add = Steam(title=title, model=model, action=action, NSH=NSH, range=range, error=error,
-                                MPI=MPI, method=method, comment=comment)
+                             MPI=MPI, method=method, comment=comment, name_image=name_image)
 
         else:
             return "Переданы некорректные данные формы"
@@ -196,7 +227,6 @@ def flow_updates(poz_update, id):
         flow_list_detail_update.title = request.form['title']
         flow_list_detail_update.model = request.form['model']
         flow_list_detail_update.action = request.form['action']
-        flow_list_detail_update.NSH = request.form['NSH']
         flow_list_detail_update.range = request.form['range']
         flow_list_detail_update.error = request.form['error']
         flow_list_detail_update.MPI = request.form['MPI']
@@ -217,22 +247,22 @@ def flow_updates(poz_update, id):
 def flow_list_(poz_show):
     if poz_show == 'water':
         flow_water_list = Flow_water.query.order_by(Flow_water.model).all()
-        return render_template("flow_list.html", flow_list=flow_water_list, poz=poz_show)
+        return render_template("flow_list.html", flow_list=flow_water_list, poz=poz_show,title='Расходомеры воды и водных растворов')
     elif poz_show == 'oil':
         flow_oil_list = Flow_oil.query.order_by(Flow_oil.model).all()
-        return render_template("flow_list.html", flow_list=flow_oil_list, poz=poz_show)
+        return render_template("flow_list.html", flow_list=flow_oil_list, poz=poz_show, title='Расходомеры сырой нефти')
     elif poz_show == 'pulp':
         flow_pulp_list = Pulp.query.order_by(Pulp.model).all()
-        return render_template("flow_list.html", flow_list=flow_pulp_list, poz=poz_show)
+        return render_template("flow_list.html", flow_list=flow_pulp_list, poz=poz_show, title='Пульпы')
     elif poz_show == 'png':
         flow_png_list = PNG.query.order_by(PNG.model).all()
-        return render_template("flow_list.html", flow_list=flow_png_list, poz=poz_show)
+        return render_template("flow_list.html", flow_list=flow_png_list, poz=poz_show, title='ПНГ расходомеры')
     elif poz_show == 'smoke':
         flow_smoke_list = Smoke.query.order_by(Smoke.model).all()
-        return render_template("flow_list.html", flow_list=flow_smoke_list, poz=poz_show)
+        return render_template("flow_list.html", flow_list=flow_smoke_list, poz=poz_show, title='Расходомеры дымовых газов')
     elif poz_show == 'steam':
         flow_steam_list = Steam.query.order_by(Steam.model).all()
-        return render_template("flow_list.html", flow_list=flow_steam_list, poz=poz_show)
+        return render_template("flow_list.html", flow_list=flow_steam_list, poz=poz_show, title='Расходомеры пара')
 
 
 

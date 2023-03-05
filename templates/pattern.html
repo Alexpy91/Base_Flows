@@ -9,17 +9,18 @@
      <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
   </head>
   <body>
-    <div class="div_header">
-      <div class="logo">
-        <a href="/">ИРНИТУ Каф АиУ "База Данных Российских Расходомеров"</a>
-      </div>
+  <header>
+    <div class="wrap-logo">
+      <a href="/">База данных Российских расходомеров</a>
+</div>
       <nav>
         <a href="/">Главная</a>
           <a href="/add_base">Добавить</a>
          <a href="/contact">Контакты</a>
 
       </nav>
-    </div>
+</header>
+
 
   {% block body%}{% endblock %}
 
