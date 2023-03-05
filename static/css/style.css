@@ -3,6 +3,7 @@
 body {
   margin_left: 8px;
   font-family: Arial, sans-serif;
+  background: #AAF0D1;
 }
 
 header {
@@ -49,27 +50,7 @@ nav {
   align-items: center;
   }
 
-#main_title {
-  float: left;
-  width: 52%;
-  margin-left: 25px;
-  margin-top: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
 
-#main_text {
-  width: 100%;
-  margin-left: 0%;
-  background: #ffffff;
-  /* border: 1px solid silver; */
-  padding: 2px 2%;
-  float: left;
-  font-size: 24px;
-  font-family: "Times New Roman", Times, serif;
-  text-indent: 50px;
-  text-align: justify;
-
-}
 .main_base a{
 text-decoration: none;
 }
@@ -153,7 +134,7 @@ input[type="password"] {
   color: rgb(241, 242, 244);
   background-color: DeepSkyBlue;
   display: inline-block;
-  padding: 6px 12px;
+  padding: 10px 12px;
   border: 1px solid;
   position: relative;
   z-index: 0;
@@ -197,7 +178,11 @@ input[type="password"] {
   color: #f5f3f8;
   background: #0c8a5a;
   text-decoration: none;
-  font-size:18px;
+  font-size:20px;
+  align:center;
+  width:50%;
+  border-radius:20px;
+
 }
 .main_base .welcome {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -235,4 +220,19 @@ select {
   color: #fff; /* Цвет текста */
   width: 100%; /* Ширина слоя */
   font-size: 12px;
+}
+
+.about_info{
+
+
+ font-size:16px;
+ width:75%;
+ background:white;
+padding-left:10px;
+ border-radius:10px;
+
+
+}
+.about_info p{
+
 }

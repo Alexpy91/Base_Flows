@@ -18,7 +18,7 @@
         <input type="text" name="error" id="error"  value="{{ flow_list_detail_update.error }}" placeholder="Допускаемая погрешность"> * <br>
         <input type="text" name="MPI" id="MPI" value="{{ flow_list_detail_update.MPI }}" placeholder="МПИ"> * <br>
         <input type="text" name="method" id="method"  value="{{ flow_list_detail_update.method }}" placeholder="Метод поверки"> * <br>
-        <textarea name="comment" id="comment" value="{{ flow_list_detail_update.comment }}" placeholder="Комментарий"></textarea> <br>
+        <textarea name="comment" id="comment" placeholder="Примечание">{{ flow_list_detail_update.comment }}</textarea> <br>
         <input type="submit" value="Сохранить">
     </form>
      <br>
